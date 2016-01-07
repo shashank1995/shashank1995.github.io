@@ -6,9 +6,9 @@ var p = {
 };
 $(function(){
     $(document).swipe({
-        swipeLeft:function(e,direction,distance,duration,fingerCount){
+        swipe:function(e,direction,distance,duration,fingerCount){
             
-if(e.keyCode===97){
+if(e.keyCode===97 || direction==left){
 
 var arr1 = new Array(4);
 for(i = 0; i < arr1.length; i++)
@@ -177,10 +177,8 @@ if(arr[0][0]!=arr[0][1] && arr[0][0]!=arr[1][0] && arr[0][1]!=arr[0][2] && arr[0
 }
 }
 }
-},
-    threshold:0
-    swipeDown:function(e,direction,distance,duration,fingerCount){
-if(e.keyCode==115){
+    
+if(e.keyCode==115 || direction==down){
   var arr1 = new Array(4);
 for(i = 0; i < arr1.length; i++)
     arr1[i] = new Array(4);
@@ -348,10 +346,8 @@ if(arr[0][0]!=arr[0][1] && arr[0][0]!=arr[1][0] && arr[0][1]!=arr[0][2] && arr[0
 }
 }
 }
-},
-    threshold:0
-    swipeRight:function(e,direction,distance,duration,fingerCount){
-if(e.keyCode==100){
+
+if(e.keyCode==100 || direction==right){
   var arr1 = new Array(4);
 for(i = 0; i < arr1.length; i++)
     arr1[i] = new Array(4);
@@ -519,10 +515,8 @@ if(arr[0][0]!=arr[0][1] && arr[0][0]!=arr[1][0] && arr[0][1]!=arr[0][2] && arr[0
 }
 }
 }
-},
-    threshold:0
-swipeUp:function(e,direction,distance,duration,fingerCount){
-if(e.keyCode==119){
+
+if(e.keyCode==119 || direction==up){
   var arr1 = new Array(4);
 for(i = 0; i < arr1.length; i++)
     arr1[i] = new Array(4);
