@@ -4,8 +4,8 @@
 	<link rel="stylesheet" href="2048.css">
 	<link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet' type='text/css'>
 		<script src="2048.js"></script>
-        <script src="jquery-1.11.3.min.js"></script>
-        <script src="jquery-2.1.4.min.js"></script>
+        <script src="jquery-1.12.0.min.js"></script>
+        <script src="jquery-2.2.0.min.js"></script>
         <script type="text/javascript" src="jquery.touchSwipe.min.js"></script>
 	<title>2048 Game
 	</title>
@@ -59,6 +59,7 @@ arr[d][e]=2;
 
 render(arr);
 document.addEventListener('keypress',playgame.bind(null,arr,score));
+document.addEventListener('touchSwipe',swipeplaygame.bind(null,arr,score));
 }
 window.addEventListener('load',init);
 </script>

@@ -685,6 +685,706 @@ if(arr[0][0]!=arr[0][1] && arr[0][0]!=arr[1][0] && arr[0][1]!=arr[0][2] && arr[0
 return;
 }
 
+function swipeplaygame(arr,score,e){
+
+var p = {
+    first: 0,
+    second: 0
+};
+  $("#document").swipe({
+  swipeLeft:function(e,direction,distance,duration,fingerCount){          
+
+var arr1 = new Array(4);
+for(i = 0; i < arr1.length; i++)
+    arr1[i] = new Array(4);
+
+  for(var i=0;i<4;i++){
+    for(var j=0;j<4;j++){
+      arr1[i][j]=arr[i][j];
+    }
+  }
+    for(var i=0;i<4;i++){
+        for(var j=0;j<3;j++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j+1;k<4;k++){
+    if(arr[i][k]!==0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+      for(var i=0;i<4;i++){
+        for(var j=1;j<3;j++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j+1;k<4;k++){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+      for(var i=0;i<4;i++){
+        for(var j=2;j<3;j++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j+1;k<4;k++){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+    for(var i=0;i<4;i++){
+        for(var j=0;j<3;j++){
+            if(arr[i][j]==arr[i][j+1]){
+                arr[i][j]=2*arr[i][j];
+                score+=arr[i][j];
+                arr[i][j+1]=0;
+            }
+        }
+    }
+  for(var i=0;i<4;i++){
+        for(var j=0;j<3;j++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j+1;k<4;k++){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+      for(var i=0;i<4;i++){
+        for(var j=1;j<3;j++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j+1;k<4;k++){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+      for(var i=0;i<4;i++){
+        for(var j=2;j<3;j++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j+1;k<4;k++){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+    var flag=1;
+    for(var i=0;i<4;i++){
+      for(var j=0;j<4;j++){
+        if(arr[i][j]!=arr1[i][j]){
+flag=0;
+        }
+      }
+    }
+printscore(score);
+
+for(var i=0;i<4;i++){
+    for(var j=0;j<4;j++){
+        if(arr[i][j]==2048){
+          render(arr);
+        alert("Congratulation you have won!!!");
+        
+    }
+    }
+}
+if(flag==0){
+var f=Math.floor((Math.random() * 20));
+if(f==8 || f==9){
+var        flag1=0;
+        do{
+    var g=Math.floor((Math.random() * 4));
+    var h=Math.floor((Math.random() * 4));
+    if(arr[g][h]==0){
+    arr[g][h]=4;
+flag1=1;
+    }
+        }while(flag1!=1);
+}
+else{
+       var flag2=0;
+do{
+   var g=Math.floor((Math.random() * 4));
+    var h=Math.floor((Math.random() * 4));
+    if(arr[g][h]==0){
+       arr[g][h]=2;
+       flag2=1;
+       }
+    }while(flag2!=1);
+}
+}
+render(arr);
+var flag3=0;
+for(var i=0;i<4;i++){
+  for(var j=0;j<4;j++){
+    if(arr[i][j]==0){
+      flag3=1;
+    }
+  }
+}
+if(flag3==0){
+if(arr[0][0]!=arr[0][1] && arr[0][0]!=arr[1][0] && arr[0][1]!=arr[0][2] && arr[0][1]!=arr[1][1] && arr[0][2]!=arr[0][3] && arr[0][2]!=arr[1][2] && arr[0][3]!=arr[1][3] && arr[1][0]!=arr[1][1] && arr[1][0]!=arr[2][0] && arr[1][1]!=arr[1][2] && arr[1][1]!=arr[2][1] && arr[1][2]!=arr[1][3] && arr[1][2]!=arr[2][2] && arr[1][3]!=arr[2][3] && arr[2][0]!=arr[3][0] && arr[2][0]!=arr[2][1] && arr[2][1]!=arr[3][1] && arr[2][1]!=arr[2][2] && arr[2][2]!=arr[2][3] && arr[2][2]!=arr[3][2] && arr[2][3]!=arr[3][3] && arr[3][0]!=arr[3][1] && arr[3][1]!=arr[3][2] && arr[3][2]!=arr[3][3]){
+  alert("Game Over")
+}
+}
+}
+});
+
+$("#document").swipe({
+  swipeDown:function(e,direction,distance,duration,fingerCount){          
+    
+  var arr1 = new Array(4);
+for(i = 0; i < arr1.length; i++)
+    arr1[i] = new Array(4);
+
+  for(var i=0;i<4;i++){
+    for(var j=0;j<4;j++){
+      arr1[i][j]=arr[i][j];
+    }
+  }
+    for(var j=0;j<4;j++){
+        for(var i=3;i>0;i--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i-1;k>=0;k--){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+         for(var j=0;j<4;j++){
+        for(var i=2;i>0;i--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i-1;k>=0;k--){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+       for(var j=0;j<4;j++){
+        for(var i=1;i>0;i--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i-1;k>=0;k--){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+    for(var j=0;j<4;j++){
+        for(var i=3;i>=1;i--){
+            if(arr[i][j]==arr[i-1][j]){
+                arr[i][j]=2*arr[i][j];
+                score+=arr[i][j];
+                arr[i-1][j]=0;
+            }
+        }
+    }
+   for(var j=0;j<4;j++){
+        for(var i=3;i>0;i--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i-1;k>=0;k--){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+         for(var j=0;j<4;j++){
+        for(var i=2;i>0;i--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i-1;k>=0;k--){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+       for(var j=0;j<4;j++){
+        for(var i=1;i>0;i--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i-1;k>=0;k--){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+     var flag=1;
+    for(var i=0;i<4;i++){
+      for(var j=0;j<4;j++){
+        if(arr[i][j]!=arr1[i][j]){
+flag=0;
+        }
+      }
+    }
+printscore(score);
+
+for(var i=0;i<4;i++){
+    for(var j=0;j<4;j++){
+        if(arr[i][j]==2048){
+          render(arr);
+        alert("Congratulation you have won!!!");
+        
+    }
+    }
+}
+if(flag==0){
+var f=Math.floor((Math.random() * 20));
+if(f==8 || f==9){
+var        flag1=0;
+        do{
+    var g=Math.floor((Math.random() * 4));
+    var h=Math.floor((Math.random() * 4));
+    if(arr[g][h]==0){
+    arr[g][h]=4;
+flag1=1;
+    }
+        }while(flag1!=1);
+}
+else{
+       var flag2=0;
+do{
+   var g=Math.floor((Math.random() * 4));
+    var h=Math.floor((Math.random() * 4));
+    if(arr[g][h]==0){
+       arr[g][h]=2;
+       flag2=1;
+       }
+    }while(flag2!=1);
+}
+}
+render(arr);
+var flag3=0;
+for(var i=0;i<4;i++){
+  for(var j=0;j<4;j++){
+    if(arr[i][j]==0){
+      flag3=1;
+    }
+  }
+}
+if(flag3==0){
+if(arr[0][0]!=arr[0][1] && arr[0][0]!=arr[1][0] && arr[0][1]!=arr[0][2] && arr[0][1]!=arr[1][1] && arr[0][2]!=arr[0][3] && arr[0][2]!=arr[1][2] && arr[0][3]!=arr[1][3] && arr[1][0]!=arr[1][1] && arr[1][0]!=arr[2][0] && arr[1][1]!=arr[1][2] && arr[1][1]!=arr[2][1] && arr[1][2]!=arr[1][3] && arr[1][2]!=arr[2][2] && arr[1][3]!=arr[2][3] && arr[2][0]!=arr[3][0] && arr[2][0]!=arr[2][1] && arr[2][1]!=arr[3][1] && arr[2][1]!=arr[2][2] && arr[2][2]!=arr[2][3] && arr[2][2]!=arr[3][2] && arr[2][3]!=arr[3][3] && arr[3][0]!=arr[3][1] && arr[3][1]!=arr[3][2] && arr[3][2]!=arr[3][3]){
+  alert("Game Over")
+}
+}
+}
+});
+
+$("#document").swipe({
+  swipeRight:function(e,direction,distance,duration,fingerCount){          
+
+if(e.keyCode==100){
+  var arr1 = new Array(4);
+for(i = 0; i < arr1.length; i++)
+    arr1[i] = new Array(4);
+
+  for(var i=0;i<4;i++){
+    for(var j=0;j<4;j++){
+      arr1[i][j]=arr[i][j];
+    }
+  }
+    for(var i=0;i<4;i++){
+        for(var j=3;j>0;j--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j-1;k>=0;k--){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+         for(var i=0;i<4;i++){
+        for(var j=2;j>0;j--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j-1;k>=0;k--){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+       for(var i=0;i<4;i++){
+        for(var j=1;j>0;j--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j-1;k>=0;k--){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+    for(var i=0;i<4;i++){
+        for(var j=3;j>=1;j--){
+            if(arr[i][j]==arr[i][j-1]){
+                arr[i][j]=2*arr[i][j];
+                score+=arr[i][j];
+                arr[i][j-1]=0;
+            }
+        }
+    }
+   for(var i=0;i<4;i++){
+        for(var j=3;j>0;j--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j-1;k>=0;k--){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+         for(var i=0;i<4;i++){
+        for(var j=2;j>0;j--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j-1;k>=0;k--){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+       for(var i=0;i<4;i++){
+        for(var j=1;j>0;j--){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=j-1;k>=0;k--){
+    if(arr[i][k]!=0){
+        arr[p.first][p.second]=arr[i][k];
+        arr[i][k]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+  var flag=1;
+    for(var i=0;i<4;i++){
+      for(var j=0;j<4;j++){
+        if(arr[i][j]!=arr1[i][j]){
+flag=0;
+        }
+      }
+    }   
+printscore(score);
+
+for(var i=0;i<4;i++){
+    for(var j=0;j<4;j++){
+        if(arr[i][j]==2048){
+          render(arr);
+        alert("Congratulation you have won!!!");
+        
+    }
+    }
+}
+if(flag==0){
+var f=Math.floor((Math.random() * 20));
+if(f==8 || f==9){
+var        flag1=0;
+        do{
+    var g=Math.floor((Math.random() * 4));
+    var h=Math.floor((Math.random() * 4));
+    if(arr[g][h]==0){
+    arr[g][h]=4;
+flag1=1;
+    }
+        }while(flag1!=1);
+}
+else{
+       var flag2=0;
+do{
+   var g=Math.floor((Math.random() * 4));
+    var h=Math.floor((Math.random() * 4));
+    if(arr[g][h]==0){
+       arr[g][h]=2;
+       flag2=1;
+       }
+    }while(flag2!=1);
+}
+}
+render(arr);
+var flag3=0;
+for(var i=0;i<4;i++){
+  for(var j=0;j<4;j++){
+    if(arr[i][j]==0){
+      flag3=1;
+    }
+  }
+}
+if(flag3==0){
+if(arr[0][0]!=arr[0][1] && arr[0][0]!=arr[1][0] && arr[0][1]!=arr[0][2] && arr[0][1]!=arr[1][1] && arr[0][2]!=arr[0][3] && arr[0][2]!=arr[1][2] && arr[0][3]!=arr[1][3] && arr[1][0]!=arr[1][1] && arr[1][0]!=arr[2][0] && arr[1][1]!=arr[1][2] && arr[1][1]!=arr[2][1] && arr[1][2]!=arr[1][3] && arr[1][2]!=arr[2][2] && arr[1][3]!=arr[2][3] && arr[2][0]!=arr[3][0] && arr[2][0]!=arr[2][1] && arr[2][1]!=arr[3][1] && arr[2][1]!=arr[2][2] && arr[2][2]!=arr[2][3] && arr[2][2]!=arr[3][2] && arr[2][3]!=arr[3][3] && arr[3][0]!=arr[3][1] && arr[3][1]!=arr[3][2] && arr[3][2]!=arr[3][3]){
+  alert("Game Over")
+}
+}
+}
+}
+});
+
+$("#document").swipe({
+  swipeUp:function(e,direction,distance,duration,fingerCount){          
+
+  var arr1 = new Array(4);
+for(i = 0; i < arr1.length; i++)
+    arr1[i] = new Array(4);
+
+  for(var i=0;i<4;i++){
+    for(var j=0;j<4;j++){
+      arr1[i][j]=arr[i][j];
+    }
+  }
+    for(var j=0;j<4;j++){
+        for(var i=0;i<4;i++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i+1;k<4;k++){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+for(var j=0;j<4;j++){
+        for(var i=1;i<4;i++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i+1;k<4;k++){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+    for(var j=0;j<4;j++){
+        for(var i=2;i<4;i++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i+1;k<4;k++){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+
+    for(var j=0;j<4;j++){
+        for(var i=0;i<=2;i++){
+            if(arr[i][j]==arr[i+1][j]){
+                arr[i][j]=2*arr[i][j];
+                score+=arr[i][j];
+                arr[i+1][j]=0;
+            }
+        }
+    }
+   for(var j=0;j<4;j++){
+        for(var i=0;i<4;i++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i+1;k<4;k++){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+for(var j=0;j<4;j++){
+        for(var i=1;i<4;i++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i+1;k<4;k++){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+    for(var j=0;j<4;j++){
+        for(var i=2;i<4;i++){
+            if(arr[i][j]==0){
+                p.first=i;
+p.second=j;
+for(var k=i+1;k<4;k++){
+    if(arr[k][j]!=0){
+        arr[p.first][p.second]=arr[k][j];
+        arr[k][j]=0;
+        break;
+    }
+}
+            }
+        }
+    }
+  var flag=1;
+    for(var i=0;i<4;i++){
+      for(var j=0;j<4;j++){
+        if(arr[i][j]!=arr1[i][j]){
+flag=0;
+        }
+      }
+    }   
+    printscore(score);
+
+for(var i=0;i<4;i++){
+    for(var j=0;j<4;j++){
+        if(arr[i][j]==2048){
+          render(arr);
+        alert("Congratulation you have won!!!");
+        
+    }
+    }
+}
+if(flag==0){
+var f=Math.floor((Math.random() * 20));
+if(f==8 || f==9){
+var        flag1=0;
+        do{
+    var g=Math.floor((Math.random() * 4));
+    var h=Math.floor((Math.random() * 4));
+    if(arr[g][h]==0){
+    arr[g][h]=4;
+flag1=1;
+    }
+        }while(flag1!=1);
+}
+else{
+       var flag2=0;
+do{
+   var g=Math.floor((Math.random() * 4));
+    var h=Math.floor((Math.random() * 4));
+    if(arr[g][h]==0){
+       arr[g][h]=2;
+       flag2=1;
+       }
+    }while(flag2!=1);
+}
+}
+render(arr);
+var flag3=0;
+for(var i=0;i<4;i++){
+  for(var j=0;j<4;j++){
+    if(arr[i][j]==0){
+      flag3=1;
+    }
+  }
+}
+if(flag3==0){
+if(arr[0][0]!=arr[0][1] && arr[0][0]!=arr[1][0] && arr[0][1]!=arr[0][2] && arr[0][1]!=arr[1][1] && arr[0][2]!=arr[0][3] && arr[0][2]!=arr[1][2] && arr[0][3]!=arr[1][3] && arr[1][0]!=arr[1][1] && arr[1][0]!=arr[2][0] && arr[1][1]!=arr[1][2] && arr[1][1]!=arr[2][1] && arr[1][2]!=arr[1][3] && arr[1][2]!=arr[2][2] && arr[1][3]!=arr[2][3] && arr[2][0]!=arr[3][0] && arr[2][0]!=arr[2][1] && arr[2][1]!=arr[3][1] && arr[2][1]!=arr[2][2] && arr[2][2]!=arr[2][3] && arr[2][2]!=arr[3][2] && arr[2][3]!=arr[3][3] && arr[3][0]!=arr[3][1] && arr[3][1]!=arr[3][2] && arr[3][2]!=arr[3][3]){
+  alert("Game Over")
+}
+}
+}
+});
+return;
+}
+
+
 function render(arr){
 var a=document.querySelectorAll("main > div");
 if(arr[0][0]==0){
