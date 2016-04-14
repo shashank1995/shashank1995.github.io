@@ -32,8 +32,8 @@ main {
 	margin-left: 400px;
 	background-color: #776e65;
 	box-sizing:border-box;
-	height: 740px;
-	width: 560px;
+	height: 440px;
+	width: 460px;
 	display: flex;
 	flex-direction:row;
 	justify-content:space-between;

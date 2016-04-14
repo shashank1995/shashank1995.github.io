@@ -32,29 +32,18 @@
 	<div class="blank"></div>
 	<div class="blank"></div>
 	<div class="blank"></div>
-        <div class="blank"></div>
-	<div class="blank"></div>
-	<div class="blank"></div>
-	<div class="blank"></div>
-	<div class="blank"></div>
-	<div class="blank"></div>
-	<div class="blank"></div>
-	<div class="blank"></div>
-	<div class="blank"></div>
 </main>
 <script>
 function init(e){
 	var score=0;
-var arr = new Array(5);
+var arr = new Array(4);
 for(i = 0; i < arr.length; i++)
-    arr[i] = new Array(5);
-
-for(var i=0;i<5;i++){
-	for(var j=0;j<5;j++){
+    arr[i] = new Array(4);
+for(var i=0;i<4;i++){
+	for(var j=0;j<4;j++){
 		arr[i][j]=0;
 	}
 }
-
 var b=Math.floor((Math.random() * 4));
 var c=Math.floor((Math.random() * 4));
 var d=Math.floor((Math.random() * 4));
@@ -65,8 +54,7 @@ if(d==b && e==c){
 var e=Math.floor((Math.random() * 4));
 }
 arr[d][e]=2;
-
-render2(arr);
+render(arr);
 document.addEventListener('keypress',playgame.bind(null,arr,score));
 document.addEventListener('touchSwipe',swipeplaygame.bind(null,arr,score));
 }
